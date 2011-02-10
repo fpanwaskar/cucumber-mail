@@ -1,7 +1,3 @@
-require 'rubygems'
-require 'rest-client'
-require 'json'
-
 Given /^(\d+) unmoderated Comment$/ do |number|
   raw_response = RestClient.post('http://10.63.36.213:8081/reader-comments/comment/create', 
     :userAlias => 'Matt',
