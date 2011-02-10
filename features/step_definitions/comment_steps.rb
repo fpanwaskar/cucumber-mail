@@ -7,11 +7,24 @@ Given /^(\d+) unmoderated Comment$/ do |number|
     :userAlias => 'Matt',
     :userLocation => 'London',
     :message => 'Test Message',
-    :assetId => 1
+    :assetId => 1355515,
+    :assetTypeId => 1
   )
   
   response = JSON.parse(raw_response)
   
+  if response['status'] == 'error'
+    raise "Response failed: #{response.inspect}"
+  end
+  
+  raw_response = RestClient.post('http://10.63.36.213:8081/reader-comments/comment/activate',
+    :commentId => response['payload'],
+    :userKey => 'asdfasfasdfasdfasd',
+    :userEmail => 'test@test.com'
+  )
+  
+  response = JSON.parse(raw_response)
+
   if response['status'] == 'error'
     raise "Response failed: #{response.inspect}"
   end
