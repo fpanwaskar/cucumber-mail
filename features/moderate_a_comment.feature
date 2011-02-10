@@ -11,4 +11,3 @@ Feature: Moderate a comment
     Then the moderator sees a green indication that the Comment is now published
     And the Comment should be displayed on the Article page
     And the moderator should see that there is 1 published Comment
-    
